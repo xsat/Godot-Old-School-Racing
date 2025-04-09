@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bixda57cqadaa"]
+
+[ext_resource type="Script" uid="uid://bqhaa4wpbot3" path="res://Scenes/move.gd" id="1_oktyh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm43v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3iiih"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7u6gu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jdoox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8jwo"]
+
+[node name="Move" type="Control"]
+custom_minimum_size = Vector2(1920, 480)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 840.0
+offset_bottom = -1440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oktyh")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 480.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vm43v")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3iiih")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7u6gu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jdoox")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d8jwo")
+action_mode = 0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

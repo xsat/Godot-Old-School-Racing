@@ -1,0 +1,172 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn2c833mhitjg"]
+
+[ext_resource type="PackedScene" uid="uid://cm30vmicv8dqn" path="res://Scenes/road.tscn" id="1_p3j42"]
+[ext_resource type="Script" uid="uid://cjpgnf8mnlvpa" path="res://Scenes/game.gd" id="1_qagqy"]
+[ext_resource type="PackedScene" uid="uid://bwhnhfbdw0gsl" path="res://Scenes/vehicle.tscn" id="2_lpwwm"]
+[ext_resource type="PackedScene" uid="uid://bixda57cqadaa" path="res://Scenes/move.tscn" id="4_dwxp2"]
+[ext_resource type="PackedScene" uid="uid://b1lsp2jn1bxxg" path="res://Scenes/score.tscn" id="5_bpo66"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_20vce"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3jacf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jshg6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pdjir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqwli"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qagqy")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.533333, 0.384314, 0.6, 1)
+
+[node name="Road" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 960)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FirstRoad" parent="Road" instance=ExtResource("1_p3j42")]
+
+[node name="SecondRoad" parent="Road" instance=ExtResource("1_p3j42")]
+position = Vector2(1920, 0)
+
+[node name="PlayerVehicle" parent="Road" instance=ExtResource("2_lpwwm")]
+position = Vector2(330, 650)
+
+[node name="TraficVehicle0" parent="Road" instance=ExtResource("2_lpwwm")]
+position = Vector2(2700, 650)
+
+[node name="TraficVehicle1" parent="Road" instance=ExtResource("2_lpwwm")]
+position = Vector2(4500, 650)
+
+[node name="TraficVehicle2" parent="Road" instance=ExtResource("2_lpwwm")]
+position = Vector2(6300, 650)
+
+[node name="TraficVehicle3" parent="Road" instance=ExtResource("2_lpwwm")]
+position = Vector2(8000, 650)
+
+[node name="MoveTop" parent="Road" instance=ExtResource("4_dwxp2")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 480.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="MoveBot" parent="Road" instance=ExtResource("4_dwxp2")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -480.0
+offset_right = 1920.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="Score" parent="." instance=ExtResource("5_bpo66")]
+layout_mode = 0
+offset_right = 57.0
+offset_bottom = 137.0
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="Stats" type="HBoxContainer" parent="Overlay"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -274.0
+offset_right = 274.0
+offset_bottom = 124.0
+grow_horizontal = 2
+
+[node name="Name" type="Label" parent="Overlay/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+text = "Your"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="Overlay/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "0"
+horizontal_alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.5
+offset_top = -48.0
+offset_right = 93.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="Overlay/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Reset" type="Button" parent="Overlay/Menu"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 90
+theme_override_styles/focus = SubResource("StyleBoxEmpty_20vce")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3jacf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jshg6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pdjir")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xqwli")
+text = "Reset"
+
+[node name="Buy" type="Button" parent="Overlay/Menu"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 90
+theme_override_styles/focus = SubResource("StyleBoxEmpty_20vce")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3jacf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jshg6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pdjir")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xqwli")
+text = "Buy Attempt"
+
+[connection signal="pressed" from="Overlay/Menu/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Overlay/Menu/Buy" to="." method="_on_buy_pressed"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwhnhfbdw0gsl"]
+
+[ext_resource type="Script" uid="uid://cjhfh2x03jj0e" path="res://Scenes/vehicle.gd" id="1_i7nix"]
+[ext_resource type="Texture2D" uid="uid://b2halqu7xrfb0" path="res://Assets/car simple.png" id="2_p7ysc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0btq"]
+atlas = ExtResource("2_p7ysc")
+region = Rect2(0, 0, 960, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgq5k"]
+atlas = ExtResource("2_p7ysc")
+region = Rect2(960, 0, 960, 960)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hd16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0btq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgq5k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0wbn"]
+size = Vector2(588, 315)
+
+[node name="Vehicle" type="Node2D"]
+script = ExtResource("1_i7nix")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+rotation = -6.28319
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_3hd16")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 94.5)
+shape = SubResource("RectangleShape2D_d0wbn")
+
+[node name="Body" type="ColorRect" parent="Area2D"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -62.0
+offset_right = 296.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

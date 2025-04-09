@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm30vmicv8dqn"]
+
+[ext_resource type="Script" uid="uid://crqkc7w7a7lbt" path="res://Scenes/road.gd" id="1_c7bgh"]
+[ext_resource type="Texture2D" uid="uid://cp7g65nrpsvac" path="res://Assets/Road.png" id="2_ab03s"]
+[ext_resource type="Texture2D" uid="uid://cuc5aq184nbyx" path="res://Assets/background.png" id="2_w1deo"]
+
+[node name="Road" type="Node2D"]
+script = ExtResource("1_c7bgh")
+
+[node name="Body" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 960)
+offset_right = 1920.0
+offset_bottom = 960.0
+
+[node name="Marking0" type="ColorRect" parent="Body"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -16.0
+offset_right = -768.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Marking1" type="ColorRect" parent="Body"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -16.0
+offset_right = -384.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Marking2" type="ColorRect" parent="Body"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Marking3" type="ColorRect" parent="Body"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = -16.0
+offset_right = 384.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Marking4" type="ColorRect" parent="Body"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 576.0
+offset_top = -16.0
+offset_right = 768.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1023, -476)
+texture = ExtResource("2_w1deo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(538, 0)
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("2_ab03s")

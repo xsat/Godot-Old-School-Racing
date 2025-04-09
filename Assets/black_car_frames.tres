@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://ccpy3v6ajihiq"]
+
+[ext_resource type="Texture2D" uid="uid://bi7kwub1odnbh" path="res://Assets/blue_car_sprite.png" id="1_t3qa7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujtey"]
+atlas = ExtResource("1_t3qa7")
+region = Rect2(0, 0, 600, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylmdk"]
+atlas = ExtResource("1_t3qa7")
+region = Rect2(600, 0, 600, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbqfd"]
+atlas = ExtResource("1_t3qa7")
+region = Rect2(0, 362, 600, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtg6g"]
+atlas = ExtResource("1_t3qa7")
+region = Rect2(600, 362, 600, 362)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujtey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylmdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbqfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtg6g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
