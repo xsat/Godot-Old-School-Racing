@@ -1,59 +1,68 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwhnhfbdw0gsl"]
+[gd_scene format=3 uid="uid://bwhnhfbdw0gsl"]
 
 [ext_resource type="Script" uid="uid://cjhfh2x03jj0e" path="res://Scenes/vehicle.gd" id="1_i7nix"]
-[ext_resource type="Texture2D" uid="uid://b2halqu7xrfb0" path="res://Assets/car simple.png" id="2_p7ysc"]
+[ext_resource type="Texture2D" uid="uid://fg85exrw37ht" path="res://Assets/green_car_3.png" id="2_3ngla"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m0btq"]
-atlas = ExtResource("2_p7ysc")
-region = Rect2(0, 0, 960, 960)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvehr"]
+atlas = ExtResource("2_3ngla")
+region = Rect2(0, 0, 16, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgq5k"]
-atlas = ExtResource("2_p7ysc")
-region = Rect2(960, 0, 960, 960)
+[sub_resource type="AtlasTexture" id="AtlasTexture_erwwo"]
+atlas = ExtResource("2_3ngla")
+region = Rect2(16, 0, 16, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3hd16"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kglda"]
+atlas = ExtResource("2_3ngla")
+region = Rect2(32, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngs36"]
+atlas = ExtResource("2_3ngla")
+region = Rect2(48, 0, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6wui"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m0btq")
+"texture": SubResource("AtlasTexture_hvehr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kgq5k")
+"texture": SubResource("AtlasTexture_erwwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kglda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngs36")
 }],
 "loop": true,
-"name": &"default",
+"name": &"ride",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0wbn"]
-size = Vector2(588, 315)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ngla"]
+size = Vector2(12, 4)
 
-[node name="Vehicle" type="Node2D"]
+[node name="Vehicle" type="Node2D" unique_id=1067495686]
 script = ExtResource("1_i7nix")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=121528461]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1941051357]
 rotation = -6.28319
 scale = Vector2(0.7, 0.7)
-sprite_frames = SubResource("SpriteFrames_3hd16")
-autoplay = "default"
+sprite_frames = SubResource("SpriteFrames_f6wui")
+animation = &"ride"
+autoplay = "ride"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 94.5)
-shape = SubResource("RectangleShape2D_d0wbn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1511232196]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_3ngla")
 
-[node name="Body" type="ColorRect" parent="Area2D"]
+[node name="Body" type="ColorRect" parent="Area2D" unique_id=1149740141]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -295.0
-offset_top = -62.0
-offset_right = 296.0
-offset_bottom = 251.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

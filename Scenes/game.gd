@@ -2,9 +2,9 @@ extends Control
 
 class_name Game
 
-@onready var first_road: Road = $Road/FirstRoad
-@onready var second_road: Road = $Road/SecondRoad
-@onready var last_road: Road = second_road
+@onready var first_road: TextureRect = $Road/Road0
+@onready var second_road: TextureRect = $Road/Road1
+@onready var last_road: TextureRect = second_road
 
 @onready var player_vehicle: Vehicle = $Road/PlayerVehicle
 @onready var trafic_vehicle_0: Vehicle = $Road/TraficVehicle0
@@ -48,10 +48,13 @@ func _process(delta: float) -> void:
 	if _is_game_over:
 		return
 	
-	var speed: float = _player_level * 100
+	var speed: float = _player_level * 30
 	
-	first_road.move_local_x(-(speed * delta))
-	second_road.move_local_x(-(speed * delta))
+	first_road.global_position.x += -(speed * delta)
+	second_road.global_position.x += -(speed * delta)
+	
+	#first_road.move_local_x(-(speed * delta))
+	#second_road.move_local_x(-(speed * delta))
 	
 	_player_miles += (speed * delta) / 100
 	if _player_level < _max_level and _player_miles >= _levels_map[_player_level]:
@@ -61,10 +64,10 @@ func _process(delta: float) -> void:
 	
 	if last_road.global_position.x <= 0:
 		if last_road.get_instance_id() == second_road.get_instance_id():
-			first_road.global_position.x = last_road.global_position.x + last_road.get_width()
+			first_road.global_position.x = last_road.global_position.x + last_road.size.x
 			last_road = first_road
 		elif last_road.get_instance_id() == first_road.get_instance_id():
-			second_road.global_position.x = last_road.global_position.x + last_road.get_width()
+			second_road.global_position.x = last_road.global_position.x + last_road.size.x
 			last_road = second_road
 	#
 	trafic_vehicle_0.move_local_x(-(speed * delta))
